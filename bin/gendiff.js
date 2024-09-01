@@ -8,3 +8,5 @@ program
   .description('Compares two configuration files and show a difference.')
   .option('-f, --format [type]', 'output format', 'stylish')
   .arguments('<filePath1> <filePath2>')
+
+  program.parse(process.argv);
