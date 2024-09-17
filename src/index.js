@@ -2,10 +2,11 @@ import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import _ from 'lodash';
 
+const resolvePath = (filePath) => path.resolve(process.cwd(), filePath);
 
 const gendiff = (filePath1, filePath2) => {
-  const path1 = path.resolve(process.cwd(), filePath1);
-  const path2 = path.resolve(process.cwd(), filePath2);
+  const path1 = resolvePath(filePath1);
+  const path2 = resolvePath(filePath2);
  
   const file1 = readFileSync(path1, 'utf-8');
   const file2 = readFileSync(path2, 'utf-8');
@@ -29,7 +30,7 @@ const gendiff = (filePath1, filePath2) => {
         result.push(`  + ${key}: ${data2[key]}`)
       }
     }
-  }
+  };
   result.push('}');
   return result.join('\n');
 
