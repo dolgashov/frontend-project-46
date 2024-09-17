@@ -14,10 +14,10 @@ test:
 	npm test
 
 test-coverage:
-	npx test --coverage --coveragProviderv8	
+	npx jest --coverage 
 
 lint:
 	npx eslint .
 
 lint fix:
-	npx eslint . --fix
+	npx eslint . --fix 
