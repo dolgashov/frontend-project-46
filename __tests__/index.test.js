@@ -1,3 +1,4 @@
+
 import gendiff from '../src/index.js';
 import result from '../__fixtures__/result.js';
 
