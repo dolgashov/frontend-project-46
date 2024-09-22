@@ -2,19 +2,21 @@
 import path from 'node:path';
 import { readFileSync } from 'node:fs';
 import _ from 'lodash';
+import parser from './parsers.js';
 
 
 const resolvePath = (filePath) => path.resolve(process.cwd(), '__fixtures__', filePath);
 
-export const gendiff = (path1, path2) => {
-  const fullPath1 = resolvePath(path1);
-  const fullPath2 = resolvePath(path2);
+  const getExtension = (fileName) => path.extname(fileName).slice(1);
 
-  const file1 = readFileSync(fullPath1, 'utf-8');
-  const file2 = readFileSync(fullPath2, 'utf-8');
+  const getData = (filePath) => parser(readFileSync(filePath, 'utf-8'), getExtension(filePath));
+
+  const gendiff = (filePath1, filePath2, format = 'stylish') => {
+    const path1 = resolvePath(filePath1);
+    const path2 = resolvePath(filePath2);
   
-  const data1 = JSON.parse(file1);
-  const data2 = JSON.parse(file2);
+    const data1 = getData(path1);
+    const data2 = getData(path2);
 
   const keys = _.sortBy(_.union(Object.keys(data1), Object.keys(data2)));
   
