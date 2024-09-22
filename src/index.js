@@ -5,7 +5,7 @@ import _ from 'lodash';
 import parser from './parsers.js';
 
 
-const resolvePath = (filePath) => path.resolve(process.cwd(), '__fixtures__', filePath);
+const resolvePath = (filePath) => path.resolve(process.cwd(), filePath);
 
   const getExtension = (fileName) => path.extname(fileName).slice(1);
 

@@ -11,4 +11,5 @@
 Show the difference of plain json files
 [![asciicast](https://asciinema.org/a/6TDH9fc6XpkSiV6SN5vMsOVhE.svg)](https://asciinema.org/a/6TDH9fc6XpkSiV6SN5vMsOVhE)
 
-
+Show the difference of yaml/yml files
+[![asciicast](https://asciinema.org/a/OlV88CH3qsywcwejv2fB3nlhj.svg)](https://asciinema.org/a/OlV88CH3qsywcwejv2fB3nlhj)
