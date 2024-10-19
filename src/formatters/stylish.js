@@ -31,10 +31,10 @@ const makeStylishDiff = (tree) => {
         return `${currentIndent(depth)} ${node.key}: ${joinStrings(childrenToString, depth + 1)}`;
       }
       case 'added': {
-        return `${currentIndent(depth)} + ${node.key}: ${stringify(node.value, depth + 1)}`;
+        return `${currentIndent(depth)}+ ${node.key}: ${stringify(node.value, depth + 1)}`;
       }
       case 'removed': {
-        return `${currentIndent(depth)} - ${node.key}: ${stringify(node.value, depth + 1)}`;
+        return `${currentIndent(depth)}- ${node.key}: ${stringify(node.value, depth + 1)}`;
       }
       case 'changed': {
         return [ `${currentIndent(depth)}- ${node.key}: ${stringify(node.oldValue, depth + 1)}`,
