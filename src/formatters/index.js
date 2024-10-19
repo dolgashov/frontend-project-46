@@ -5,7 +5,7 @@ export default function formatter(tree, format) {
   switch (format) {
     case 'stylish':
       return makeStylish(tree);
-    case 'palin':
+    case 'plain':
       return makePlain(tree);
     case 'json':
       return JSON.stringify(tree);

@@ -1,15 +1,25 @@
-
+import path from 'node:path';
 import gendiff from '../src/index.js';
-import result from '../__fixtures__/result.js';
+import resultStylish from '../__fixtures__/result.js';
+import resultJSON from '../__fixtures__/resultJSON.js';
+import resultPlain from '../__fixtures__/resultPlain.js';
 
-test('check json plain', () => {
-  expect(gendiff('file1.json', 'file2.json')).toEqual(result);
-});
+const testList = [
+  'yml',
+  'json',
+  'yaml',
+];
 
-test('check yaml plain', () => {
-  expect(gendiff('file1.yaml', 'file2.yaml')).toEqual(result);
-});
+const resolvePath = (filePath) => path.resolve(process.cwd(), `__fixtures__/${filePath}`);
 
-test('check yml plain', () => {
-  expect(gendiff('file1.yml', 'file2.yml')).toEqual(result);
+describe('gendiff', () => {
+  test.each(testList)('gendiff %s', (format) => {
+    const filepath1 = resolvePath(`file1.${format}`);
+    const filepath2 = resolvePath(`file2.${format}`);
+
+    expect(gendiff(filepath1, filepath2)).toEqual(resultStylish);
+    expect(gendiff(filepath1, filepath2, 'stylish')).toEqual(resultStylish);
+    expect(gendiff(filepath1, filepath2, 'plain')).toEqual(resultPlain);
+    expect(gendiff(filepath1, filepath2, 'json')).toEqual(resultJSON);
+  });
 });
