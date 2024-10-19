@@ -1,4 +1,3 @@
-
 import path from 'node:path';
 import { readFileSync } from 'node:fs';
 import _ from 'lodash';

@@ -28,7 +28,7 @@ const makeStylishDiff = (tree) => {
       }
       case 'nested': {
         const childrenToString = node.children.flatMap((child) => iter(child, depth +1));
-        return `${currentIndent(depth)} ${node.key}: ${joinStrings(childrenToString, depth + 1)}`;
+        return `${currentIndent(depth)}  ${node.key}: ${joinStrings(childrenToString, depth + 1)}`;
       }
       case 'added': {
         return `${currentIndent(depth)}+ ${node.key}: ${stringify(node.value, depth + 1)}`;
