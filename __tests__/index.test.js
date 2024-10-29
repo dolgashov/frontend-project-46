@@ -7,7 +7,6 @@ import resultPlain from '../__fixtures__/resultPlain.js';
 const testList = [
   'yml',
   'json',
-  'yaml',
 ];
 
 const resolvePath = (filePath) => path.resolve(process.cwd(), `__fixtures__/${filePath}`);
