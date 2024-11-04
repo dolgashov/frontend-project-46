@@ -1,4 +1,4 @@
-import _ from "lodash";
+import _ from 'lodash';
 
 const getPath = (nodeNames) => nodeNames.flat().join('.');
 

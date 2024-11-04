@@ -1,5 +1,5 @@
 // eslint-disable-next-line operator-linebreak
-const result = 
+const result =
 `Property 'common.follow' was added with value: false
 Property 'common.setting2' was removed
 Property 'common.setting3' was updated. From true to null
