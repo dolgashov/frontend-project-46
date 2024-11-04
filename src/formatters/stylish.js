@@ -8,7 +8,7 @@ const braceIndent = (depth) => indent.repeat(indentSize * depth - indentSize);
 const joinStrings = (lines, depth) => [
   '{',
   ...lines,
-  `${braceIndent(depth)} }`,
+  `${braceIndent(depth)}}`,
 ].join('\n');
 
 const stringify = (data, depth) => {
@@ -38,8 +38,8 @@ const makeStylishDiff = (tree) => {
         return `${currentIndent(depth)}- ${node.key}: ${stringify(node.value, depth + 1)}`;
       }
       case 'changed': {
-        return [`${currentIndent(depth)}- ${node.key}: ${stringify(node.oldValue, depth + 1)}`,
-          `${currentIndent(depth)}+ ${node.key}: ${stringify(node.newValue, depth + 1)}`];
+        return [`${currentIndent(depth)}- ${node.key}: ${stringify(node.value, depth + 1)}`,
+          `${currentIndent(depth)}+ ${node.key}: ${stringify(node.value2, depth + 1)}`];
       }
       case 'unchanged': {
         return `${currentIndent(depth)}  ${node.key}: ${stringify(node.value, depth + 1)}`;

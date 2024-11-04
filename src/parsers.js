@@ -1,9 +1,9 @@
 import yaml from 'js-yaml';
 
-const parse = {
+const parsers = {
   json: JSON.parse,
   yaml: yaml.load,
   yml: yaml.load,
 };
 
-export default (data, format) => parse[format](data);
+export default (data, format) => parsers[format](data);

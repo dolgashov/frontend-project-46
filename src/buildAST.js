@@ -13,7 +13,7 @@ const buildAST = (data1, data2) => {
         value: data2[key],
       };
     }
-    if (!_.has(data2,key)) {
+    if (!_.has(data2, key)) {
       return {
         type: 'removed',
         key,
@@ -37,11 +37,11 @@ const buildAST = (data1, data2) => {
     return {
       type: 'changed',
       key,
-      oldValue: data1[key],
-      newValue: data2[key],
+      value: data1[key],
+      value2: data2[key],
     };
   });
-    return children;
+  return children;
 };
 
 const getDifferenceTree = (data1, data2) => ({

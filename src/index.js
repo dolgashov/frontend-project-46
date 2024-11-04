@@ -1,25 +1,25 @@
 import path from 'node:path';
-import { readFileSync } from 'node:fs';
-import _ from 'lodash';
-import parser from './parsers.js';
+import fs from 'fs';
+import parse from './parsers.js';
+import buildAst from './buildAST.js';
 import formatter from './formatters/index.js';
-import getDifferenceTree from './buildAST.js';
 
-const resolvePath = (filePath) => path.resolve(process.cwd(), filePath);
+const resolvePath = (filepath) => (filepath.includes('__fixtures__')
+  ? path.resolve(process.cwd(), filepath)
+  : path.resolve(process.cwd(), (`__fixtures__/${filepath}`))
+);
 
-const getExtension = (fileName) => path.extname(fileName).slice(1);
+const extractFormat = (filepath) => path.extname(filepath).slice(1);
 
-const getData = (filePath) => parser(readFileSync(filePath, 'utf-8'), getExtension(filePath));
+const getData = (filepath) => parse(fs.readFileSync(filepath, 'utf-8'), extractFormat(filepath));
 
-  const gendiff = (filePath1, filePath2, format = 'stylish') => {
-    const path1 = resolvePath(filePath1);
-    const path2 = resolvePath(filePath2);
-  
-    const data1 = getData(path1);
-    const data2 = getData(path2);
+export default (filepath1, filepath2, format = 'stylish') => {
+  const path1 = resolvePath(filepath1);
+  const path2 = resolvePath(filepath2);
 
-  return formatter(getDifferenceTree(data1, data2), format);
- 
+  const data1 = getData(resolvePath(path1));
+  const data2 = getData(resolvePath(path2));
+
+  const ast = buildAst(data1, data2);
+  return formatter(ast, format);
 };
-
-export default gendiff;
